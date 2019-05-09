@@ -17,10 +17,11 @@ int dil=0;
 int const max_shape = 2;
 int const max_kernel_size = 10;
 int const shapes [] = {MORPH_RECT,MORPH_CROSS,MORPH_ELLIPSE};
-String const windowName = "Dilatation/Erosion";
+String windowName;
 
 Mat DilaErod::Erosion(Mat img) {
     dst.release();
+    windowName = "Erosion";
     src=img;
 
     namedWindow( windowName, WINDOW_AUTOSIZE );
@@ -39,6 +40,7 @@ Mat DilaErod::Erosion(Mat img) {
 }
 Mat DilaErod::Dilatation(Mat img) {
     dst.release();
+    windowName = "Dilatation";
     src=img;
 
     namedWindow( windowName, WINDOW_AUTOSIZE );
