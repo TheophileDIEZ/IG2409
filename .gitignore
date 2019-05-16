@@ -1,0 +1,16 @@
+#generated sorces
+x86/
+x64/
+
+#VisualStudio Project files
+*.sln
+*.vcxproj*
+*.props
+*.vs/
+
+#Jet Brain
+.idea/
+
+#Eclipse
+.project
+.classpath
