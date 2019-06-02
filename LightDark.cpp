@@ -1,5 +1,5 @@
 #include <opencv2/opencv.hpp>
-#include "lightDark.h"
+#include "LightDark.h"
 
 using namespace cv;
 using std::cin;
