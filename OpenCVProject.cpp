@@ -7,6 +7,7 @@
 #include "Canny.cpp"
 #include "Crop.cpp"
 #include "Crop.h"
+#include "DilaErod.h"
 
 using namespace cv;
 using namespace std;
@@ -36,6 +37,8 @@ int main(int argc, char** argv)
 		{
 			case 1:
 				cout << " You have choosen the option number 1: Dilatation / Erosion" << endl;
+				DilaErod::Erosion(src);
+                		DilaErod::Dilatation(src);
 				break;
 
 			case 2:
