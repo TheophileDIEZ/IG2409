@@ -9,8 +9,8 @@
 #include <iostream>
 using namespace cv;
 using namespace std;
-cv::Mat src;
-cv::Mat dst;
+cv::Mat srcDilaErod;
+cv::Mat dstDilaErod;
 int shape=0;
 int ero=0;
 int dil=0;
@@ -20,9 +20,9 @@ int const shapes [] = {MORPH_RECT,MORPH_CROSS,MORPH_ELLIPSE};
 String windowName;
 
 Mat DilaErod::Erosion(Mat img) {
-    dst.release();
+    dstDilaErod.release();
     windowName = "Erosion";
-    src=img;
+    srcDilaErod=img;
 
     namedWindow( windowName, WINDOW_AUTOSIZE );
     createTrackbar("Shape (Rectangle/Cross/Ellipse)", windowName,&shape,max_shape);
@@ -35,13 +35,13 @@ Mat DilaErod::Erosion(Mat img) {
     destroyWindow(windowName);
     shape=0;
     ero=0;
-    return dst;
+    return dstDilaErod;
 
 }
 Mat DilaErod::Dilatation(Mat img) {
-    dst.release();
+    dstDilaErod.release();
     windowName = "Dilatation";
-    src=img;
+    srcDilaErod=img;
 
     namedWindow( windowName, WINDOW_AUTOSIZE );
     createTrackbar("Shape (Rectangle/Cross/Ellipse)", windowName,&shape,max_shape);
@@ -52,7 +52,7 @@ Mat DilaErod::Dilatation(Mat img) {
     destroyWindow(windowName);
     shape=0;
     dil=0;
-    return dst;
+    return dstDilaErod;
 
 }
 
@@ -60,12 +60,12 @@ Mat DilaErod::Dilatation(Mat img) {
 
 void DilaErod::Dil(int, void*) {
     Mat element = getStructuringElement(shapes[shape],Size(2* dil +1,2* dil +1),Point(dil,dil));
-    dilate(src,dst,element);
+    dilate(srcDilaErod,dstDilaErod,element);
 
-    imshow(windowName,dst);
+    imshow(windowName,dstDilaErod);
 }
 void DilaErod::Ero(int, void*) {
     Mat element = getStructuringElement(shapes[shape],Size(2* ero +1,2* ero +1),Point(ero,ero));
-    erode(src,dst,element);
-    imshow(windowName,dst);
+    erode(srcDilaErod,dstDilaErod,element);
+    imshow(windowName,dstDilaErod);
 }
