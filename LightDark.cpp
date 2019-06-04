@@ -9,8 +9,8 @@ using std::endl;
 //Global variables 
 Mat srcLD;
 Mat dstRebright;
-int alpha = 1;		/*< Simple contrast control */
-int beta = 0;       /*< Simple brightness control */
+int alpha = 1;		/*< Simple brightness control */
+int beta = 0;       /*< Simple white balance control */
 Mat trackLD(1, 290, CV_8U, Scalar::all(255));
 
 //pre call
