@@ -10,7 +10,7 @@ using std::endl;
 Mat srcLD;
 Mat dstRebright;
 int alpha = 100;		/*< Simple brightness control */
-int beta = 0;       /*< Simple white balance control */
+int mybeta = 0;       /*< Simple white balance control */
 Mat trackLD(1, 290, CV_8U, Scalar::all(255));
 
 //pre call
@@ -25,7 +25,7 @@ Mat changebright(Mat image)
 	namedWindow("Trackbar", WINDOW_AUTOSIZE);
 
 	createTrackbar("brightness, alpha", "Trackbar", &alpha, 300, rebright);
-	createTrackbar("white balance, beta","Trackbar", &beta, 100, rebright);
+	createTrackbar("white balance, beta","Trackbar", &mybeta, 100, rebright);
 
 	// Create a window
 	namedWindow("Source", WINDOW_AUTOSIZE);
@@ -45,7 +45,7 @@ void rebright(int, void*)
 		{
 			for (int c = 0; c < srcLD.channels(); c++) 
 			{
-				dstRebright.at<Vec3b>(y, x)[c] = saturate_cast<uchar>((alpha/100)*srcLD.at<Vec3b>(y, x)[c] + beta);
+				dstRebright.at<Vec3b>(y, x)[c] = saturate_cast<uchar>((alpha/100)*srcLD.at<Vec3b>(y, x)[c] + mybeta);
 			}
 		}
 	}
