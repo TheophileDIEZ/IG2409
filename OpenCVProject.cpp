@@ -8,6 +8,7 @@
 #include "Crop.cpp"
 #include "Crop.h"
 #include "DilaErod.h"
+#include "StitcherMultimedia.cpp"
 
 using namespace cv;
 using namespace std;
@@ -60,6 +61,7 @@ int main(int argc, char** argv)
 
 			case 4:
 				cout << " You have choosen the option number 4: Panorama / Stitching" << endl;
+				stitcher(argc, argv);
 				break;
 
 			case 5:
