@@ -6,12 +6,14 @@ using namespace std;
 
 //Global Variables
 Mat srcCrop;
+Mat dstCrop;
 Rect roi; //Region Of Interest
 bool drawing_box = false;
 
-void Crop(Mat img)
+Mat Crop(Mat img)
 {
 	// Load an image
+	dstCrop.release();
     srcCrop = img;
     
 	// Create a window and show source image
@@ -20,6 +22,8 @@ void Crop(Mat img)
 	
 	// When a mouse event occurred, my_mouse_callback function is called 
 	setMouseCallback("Crop src", my_mouse_callback, (void*)&srcCrop);
+	waitKey(0);
+	return dstCrop;
 }
 
 
@@ -60,8 +64,8 @@ void my_mouse_callback(int event, int x, int y, int flags, void* param)
 			}
 
 			//Create a new image with specific roi
-			Mat dstCrop(srcCrop, roi);
-			
+			dstCrop=srcCrop(roi);
+
 			// Create a window and show result image
 			namedWindow("Crop dst", WINDOW_AUTOSIZE);
 			imshow("Crop dst", dstCrop);

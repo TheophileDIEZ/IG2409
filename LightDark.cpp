@@ -16,7 +16,7 @@ Mat trackLD(1, 290, CV_8U, Scalar::all(255));
 //pre call
 //void changebright(Mat* image);
 
-void changebright(Mat image) 
+Mat changebright(Mat image)
 {
 	srcLD = image;
 	dstRebright = Mat::zeros(image.size(), image.type());
@@ -34,6 +34,7 @@ void changebright(Mat image)
 	imshow("Source", srcLD);
 
 	rebright(0, 0);
+	return dstRebright;
 }
 
 void rebright(int, void*) 

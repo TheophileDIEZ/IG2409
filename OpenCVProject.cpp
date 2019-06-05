@@ -1,4 +1,4 @@
-#include "pch.h"
+//#include "pch.h"
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include "Resize.h"
@@ -9,8 +9,9 @@
 #include "Crop.h"
 #include "ColorMap.cpp"
 #include "ColorMap.h"
-#include "DilaErod.h"
-#include "StitcherMultimedia.cpp"
+#include "DilaErod.cpp"
+#include "LightDark.cpp"
+//#include "StitcherMultimedia.cpp"
 
 using namespace cv;
 using namespace std;
@@ -20,8 +21,8 @@ int main(int argc, char** argv)
 	//Variables
 	int option = 0;
 	int exit = 0;
-	Mat src = imread("sample.jpg", IMREAD_COLOR);
-	Mat dst;
+	Mat src = imread("../sample.jpg", IMREAD_COLOR);
+	Mat dst = src;
 
 	do 
 	{
@@ -41,15 +42,15 @@ int main(int argc, char** argv)
 		{
 			case 1:
 				cout << " You have choosen the option number 1: Dilatation / Erosion" << endl;
-				DilaErod::Erosion(src);
-                		DilaErod::Dilatation(src);
+				dst=DilaErod::Erosion(dst);
+				dst=DilaErod::Dilatation(dst);
 				break;
 
 			case 2:
 				cout << " You have choosen the option number 2: Resizing" << endl;
 				
 				//Call resize function
-				Resize(src);
+				dst=Resize(dst);
 
 				// Wait for any keystroke in the window
 				waitKey(0);
@@ -62,7 +63,7 @@ int main(int argc, char** argv)
 				cout << " You have choosen the option number 3: Ligthen / Darken" << endl;
 				
 				//Call Lighten Darken function
-				changebright(src);
+				dst=changebright(dst);
 
 				// Wait for any keystroke in the window
 				waitKey(0);
@@ -73,14 +74,15 @@ int main(int argc, char** argv)
 
 			case 4:
 				cout << " You have choosen the option number 4: Panorama / Stitching" << endl;
-				stitcher(argc, argv);
+				//stitcher(argc, argv);
 				break;
 
 			case 5:
 				cout << " You have choosen the option number 5: Canny edge detection" << endl;
 
 				//Call canny function
-				Canny(src);
+				dst=Canny(dst);
+
 				// Wait for any keystroke in the window
 				waitKey(0);
 
@@ -92,10 +94,7 @@ int main(int argc, char** argv)
 				cout << " You have choosen the option number 6: Crop" << endl;
 
 				//Call crop function
-				Crop(src);
-
-				// Wait for any keystroke in the window
-				waitKey(0);
+				dst=Crop(dst);
 
 				//destroy all opened windows
 				destroyAllWindows();
@@ -105,7 +104,7 @@ int main(int argc, char** argv)
 				cout << " You have choosen the option number 7: ColorMap" << endl;
 
 				//Call crop function
-				ColorMap(src);
+				dst=ColorMap(dst);
 
 				// Wait for any keystroke in the window
 				waitKey(0);

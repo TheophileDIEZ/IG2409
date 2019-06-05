@@ -9,7 +9,7 @@ using namespace cv;
 Mat srcColorMap, dstColorMap;
 int option;
 
-void ColorMap(Mat img)
+Mat ColorMap(Mat img)
 {
 	// Load an image
     srcColorMap = img;
@@ -82,6 +82,7 @@ void ColorMap(Mat img)
 		namedWindow("Color Map dst", WINDOW_AUTOSIZE);
 		imshow("Color Map dst", dstColorMap);
 	}
+	return dstColorMap;
 
 }
 

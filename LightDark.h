@@ -9,7 +9,7 @@
 	Output parameters:
 		void
 **********************************************************/
-void changebright(cv::Mat img);
+cv::Mat changebright(cv::Mat img);
 
 /***************************************************************
   Function: changebright

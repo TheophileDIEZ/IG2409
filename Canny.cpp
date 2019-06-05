@@ -1,4 +1,4 @@
-#include "pch.h"
+//#include "pch.h"
 #include <opencv2/opencv.hpp>
 #include <stdlib.h>
 #include <stdio.h>
@@ -11,7 +11,7 @@ using namespace std;
 Mat srcCanny, dstBlur, dstCanny;
 int lowThreshold;
 
-void Canny(Mat img)
+Mat Canny(Mat img)
 {
 	// Load an image
 	srcCanny = img;
@@ -27,6 +27,7 @@ void Canny(Mat img)
 
 	//Show the image modified with trackbar
 	edgeDetection(0, 0);
+	return dstCanny;
 }
 
 void edgeDetection(int, void*)

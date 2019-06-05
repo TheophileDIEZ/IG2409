@@ -10,7 +10,7 @@ int fx = 100, fy = 100, factor = 300;
 int k = 0;
 Mat track(1, 290, CV_8U, Scalar::all(255));
 
-void Resize(Mat img)
+Mat Resize(Mat img)
 {
 	// Load an image
 	src = img;
@@ -28,6 +28,7 @@ void Resize(Mat img)
 
 	//Show the image modified with trackbar
 	resizing(0, 0);
+	return dstResize;
 }
 
 void resizing(int, void*)

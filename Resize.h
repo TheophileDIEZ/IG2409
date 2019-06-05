@@ -9,7 +9,7 @@
 	Output parameters:
 		void
 **********************************************************/
-void Resize(cv::Mat img);
+cv::Mat Resize(cv::Mat img);
 
 /***************************************************************
   Function: resizing

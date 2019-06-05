@@ -11,7 +11,7 @@
 	Output parameters:
 		void
 **********************************************************/
-void ColorMap(cv::Mat img);
+cv::Mat ColorMap(cv::Mat img);
 
 /*********************************************************
   Function: showInfo
