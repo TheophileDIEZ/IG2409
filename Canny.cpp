@@ -1,4 +1,4 @@
-#include "pch.h"
+//#include "pch.h" //is required when precompiled headers is turned off in Visual Studio
 #include <opencv2/opencv.hpp>
 #include <stdlib.h>
 #include <stdio.h>
@@ -9,7 +9,7 @@ using namespace std;
 
 /// Global variables
 Mat srcCanny, dstBlur, dstCanny;
-int lowThreshold;
+int lowThreshold = 50; //50 to start in the middle of the trackbar
 
 void Canny(Mat img)
 {
