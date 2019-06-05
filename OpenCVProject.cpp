@@ -7,6 +7,8 @@
 #include "Canny.cpp"
 #include "Crop.cpp"
 #include "Crop.h"
+#include "ColorMap.cpp"
+#include "ColorMap.h"
 #include "DilaErod.h"
 #include "StitcherMultimedia.cpp"
 
@@ -30,7 +32,8 @@ int main(int argc, char** argv)
 		cout << "  4 - Panorama / Stitching" << endl;
 		cout << "  5 - Canny edge detection" << endl;
 		cout << "  6 - Crop" << endl;
-		cout << "  7 - EXIT" << endl;
+		cout << "  7 - Color Map" << endl;
+		cout << "  8 - EXIT" << endl;
 		
 		cin >> option;
 
@@ -57,6 +60,15 @@ int main(int argc, char** argv)
 
 			case 3:
 				cout << " You have choosen the option number 3: Ligthen / Darken" << endl;
+				
+				//Call Lighten Darken function
+				changebright(src);
+
+				// Wait for any keystroke in the window
+				waitKey(0);
+
+				//destroy all opened windows
+				destroyAllWindows();
 				break;
 
 			case 4:
@@ -88,9 +100,22 @@ int main(int argc, char** argv)
 				//destroy all opened windows
 				destroyAllWindows();
 				break;
-
+				
 			case 7:
-				cout << " You have choosen the option number 7: Exit and close the program " << endl;
+				cout << " You have choosen the option number 7: ColorMap" << endl;
+
+				//Call crop function
+				ColorMap(src);
+
+				// Wait for any keystroke in the window
+				waitKey(0);
+
+				//destroy all opened windows
+				destroyAllWindows();
+				break;
+
+			case 8:
+				cout << " You have choosen the option number 8: Exit and close the program " << endl;
 				exit = 1;
 				break;
 
