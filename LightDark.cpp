@@ -38,14 +38,15 @@ Mat changebright(Mat image)
 }
 
 void rebright(int, void*) 
-{        						
+{        	
+	double alphadouble = static_cast<double>(alpha) / (double)(1.0 * 100);
 	for (int y = 0; y < srcLD.rows; y++) 
 	{
 		for (int x = 0; x < srcLD.cols; x++) 
 		{
 			for (int c = 0; c < srcLD.channels(); c++) 
 			{
-				dstRebright.at<Vec3b>(y, x)[c] = saturate_cast<uchar>((alpha/100)*srcLD.at<Vec3b>(y, x)[c] + mybeta);
+				dstRebright.at<Vec3b>(y, x)[c] = saturate_cast<uchar>((alphadouble/100)*srcLD.at<Vec3b>(y, x)[c] + mybeta);
 			}
 		}
 	}
