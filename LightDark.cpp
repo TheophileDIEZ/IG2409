@@ -46,7 +46,7 @@ void rebright(int, void*)
 		{
 			for (int c = 0; c < srcLD.channels(); c++) 
 			{
-				dstRebright.at<Vec3b>(y, x)[c] = saturate_cast<uchar>((alphadouble/100)*srcLD.at<Vec3b>(y, x)[c] + mybeta);
+				dstRebright.at<Vec3b>(y, x)[c] = saturate_cast<uchar>(alphadouble*srcLD.at<Vec3b>(y, x)[c] + mybeta);
 			}
 		}
 	}
